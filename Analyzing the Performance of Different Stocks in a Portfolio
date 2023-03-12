@@ -1,0 +1,19 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load the data into a pandas dataframe
+df = pd.read_csv('stock_portfolio_data.csv')
+
+# Create a line chart of the daily returns for each stock
+sns.lineplot(data=df.drop('date', axis=1))
+plt.title('Daily stock returns')
+plt.xlabel('Date')
+plt.ylabel('Returns')
+plt.show()
+
+# Calculate the total portfolio returns and average daily returns
+total_returns = df.drop('date', axis=1).sum(axis=1).sum()
+average_daily_returns = df.drop('date', axis=1).mean().mean()
+print('Total portfolio returns:', total_returns)
+print('Average daily returns:', average_daily_returns)
